@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ID Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <header>
+    <nav class="container">
+      <a href="index.html" class="nav-logo">Jane Smith - ID Portfolio</a>
+      <ul class="nav-links">
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <h1>Instructional Design<br>that <span>drives results</span></h1>
+      <p>I design eLearning experiences that are engaging, efficient, and built around real learner needs.</p>
+      <div class="hero-tags">
+        <span class="hero-tag">Articulate Storyline</span>
+        <span class="hero-tag">Adult Learning Theory</span>
+        <span class="hero-tag">Scenario-Based Learning</span>
+        <span class="hero-tag">LMS Integration</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="projects-section" id="projects">
+    <div class="container">
+      <div class="section-header">
+        <h2>Featured Projects</h2>
+        <span id="project-count"></span>
+      </div>
+      <div class="project-grid" id="project-grid">
+        <!-- Cards injected by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about-section" id="about">
+    <div class="container">
+      <div class="about-inner">
+        <div>
+          <p class="about-label">About Me</p>
+          <h2>Learning designer & eLearning developer</h2>
+        </div>
+        <div class="about-body">
+          <p>
+            I'm an instructional designer with X years of experience building eLearning for
+            corporate, healthcare, and nonprofit clients. I specialize in translating complex
+            subject matter into clear, engaging digital learning experiences.
+          </p>
+          <p>
+            My process starts with understanding the performance gap - not just the content -
+            so the final product changes behavior, not just awareness.
+          </p>
+          <div class="about-skills">
+            <span class="skill-chip">Articulate Storyline 360</span>
+            <span class="skill-chip">Rise 360</span>
+            <span class="skill-chip">ADDIE / SAM</span>
+            <span class="skill-chip">Storyboarding</span>
+            <span class="skill-chip">SCORM / xAPI</span>
+            <span class="skill-chip">LMS Administration</span>
+            <span class="skill-chip">Needs Analysis</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact-section" id="contact">
+    <div class="container">
+      <h2>Let's work together</h2>
+      <p>Available for freelance projects and full-time opportunities.</p>
+      <div class="contact-links">
+        <a href="mailto:you@email.com" class="btn btn-primary">
+          <!-- mail icon -->
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+            <polyline points="22,6 12,13 2,6"/>
+          </svg>
+          Email Me
+        </a>
+        <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener" class="btn btn-outline">
+          <!-- linkedin icon -->
+          <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+            <rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
+          </svg>
+          LinkedIn
+        </a>
+        <a href="resume.pdf" target="_blank" class="btn btn-outline">
+          <!-- doc icon -->
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+            <polyline points="14,2 14,8 20,8"/>
+            <line x1="16" y1="13" x2="8" y2="13"/>
+            <line x1="16" y1="17" x2="8" y2="17"/>
+          </svg>
+          Resume
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <span id="footer-name">Jane Smith</span> - Instructional Designer
+    </div>
+  </footer>
+
+  <script>
+    // Load projects from projects.json and render cards
+    async function loadProjects() {
+      const grid = document.getElementById('project-grid');
+      const countEl = document.getElementById('project-count');
+
+      try {
+        const res = await fetch('projects.json');
+        if (!res.ok) throw new Error('Could not load projects.json');
+        const projects = await res.json();
+
+        countEl.textContent = `${projects.length} project${projects.length !== 1 ? 's' : ''}`;
+
+        grid.innerHTML = projects.map(p => `
+          <a class="project-card" href="project.html?id=${encodeURIComponent(p.id)}">
+            <div class="project-card-thumb">
+              ${p.thumbnail
+                ? `<img src="${p.thumbnail}" alt="${p.title}" onerror="this.parentElement.innerHTML=thumbPlaceholder()" />`
+                : thumbPlaceholderHTML()
+              }
+            </div>
+            <div class="project-card-body">
+              <div class="project-card-title">${p.title}</div>
+              <div class="project-card-desc">${p.description}</div>
+              <div class="project-card-meta">
+                ${p.duration ? `<span>
+                  <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/>
+                  </svg>
+                  ${p.duration}
+                </span>` : ''}
+                ${p.tools ? `<span>${p.tools}</span>` : ''}
+              </div>
+              <div class="project-tags">
+                ${(p.tags || []).map(t => `<span class="tag">${t}</span>`).join('')}
+              </div>
+            </div>
+          </a>
+        `).join('');
+      } catch (e) {
+        grid.innerHTML = `<div class="error-msg"><p>Could not load projects. Make sure you're running this on a web server.</p></div>`;
+        console.error(e);
+      }
+    }
+
+    function thumbPlaceholderHTML() {
+      return `<div class="thumb-placeholder">
+        <svg width="48" height="48" fill="none" stroke="#2d6a9f" stroke-width="1.5" viewBox="0 0 24 24">
+          <rect x="2" y="3" width="20" height="14" rx="2"/>
+          <path d="M8 21h8M12 17v4"/>
+          <polygon points="10,8 16,11 10,14"/>
+        </svg>
+      </div>`;
+    }
+
+    loadProjects();
+  </script>
+</body>
+</html>

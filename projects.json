@@ -1,0 +1,24 @@
+[
+  {
+    "id": "using-company-email-effectively",
+    "title": "Using Company Email Effectively",
+    "description": "An eLearning module focused on practical email habits, professional tone, and communication best practices in the workplace.",
+    "thumbnail": "",
+    "folder": "projects/using-company-email-effectively",
+    "entry": "index.html",
+    "tags": ["Communication", "Workplace", "Professional Skills"],
+    "duration": "",
+    "tools": "Articulate Storyline 360"
+  },
+  {
+    "id": "difficult-conversations",
+    "title": "Difficult Conversations",
+    "description": "A scenario-based learning experience designed to help employees approach challenging workplace conversations with clarity and confidence.",
+    "thumbnail": "",
+    "folder": "projects/difficult-conversations",
+    "entry": "index.html",
+    "tags": ["Scenario-Based", "Communication", "Leadership"],
+    "duration": "",
+    "tools": "Articulate Storyline 360"
+  }
+]

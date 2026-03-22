@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Project - ID Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <header>
+    <nav class="container">
+      <a href="index.html" class="nav-logo">Jane Smith - ID Portfolio</a>
+      <ul class="nav-links">
+        <li><a href="index.html#projects">Projects</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <!-- Injected by JS -->
+  </main>
+
+  <footer>
+    <div class="container">
+      <span>Jane Smith</span> - Instructional Designer
+    </div>
+  </footer>
+
+  <script>
+    // Parse ?id= from URL
+    const params = new URLSearchParams(window.location.search);
+    const projectId = params.get('id');
+
+    async function loadProject() {
+      const main = document.getElementById('main-content');
+
+      if (!projectId) {
+        showError('No project specified.');
+        return;
+      }
+
+      try {
+        const res = await fetch('projects.json');
+        if (!res.ok) throw new Error('Could not load projects.json');
+        const projects = await res.json();
+
+        const p = projects.find(x => x.id === projectId);
+        if (!p) {
+          showError(`Project "${projectId}" not found.`);
+          return;
+        }
+
+        // Update page title
+        document.title = `${p.title} - ID Portfolio`;
+
+        // Different Storyline exports may launch from story.html or index.html.
+        const storyEntry = `${p.folder}/${p.entry || 'story.html'}`;
+
+        main.innerHTML = `
+          <div class="project-page-header container">
+            <a href="index.html" class="back-link">
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <polyline points="15,18 9,12 15,6"/>
+              </svg>
+              All Projects
+            </a>
+
+            <div class="project-page-meta">
+              <h1>${p.title}</h1>
+              <p>${p.description}</p>
+              <div class="project-tags">
+                ${(p.tags || []).map(t => `<span class="tag">${t}</span>`).join('')}
+              </div>
+            </div>
+
+            <div class="project-info-row">
+              ${p.duration ? `<span><strong>Duration:</strong> ${p.duration}</span>` : ''}
+              ${p.tools ? `<span><strong>Tools:</strong> ${p.tools}</span>` : ''}
+              ${p.folder ? `<span><strong>Format:</strong> HTML5 / SCORM</span>` : ''}
+            </div>
+          </div>
+
+          <div class="container" style="padding-bottom: 80px;">
+            <div class="storyline-wrap" id="storyline-wrap">
+              <iframe
+                id="storyline-frame"
+                src="${storyEntry}"
+                allowfullscreen
+                title="${p.title}"
+                style="height: 600px;"
+              ></iframe>
+            </div>
+
+            <p style="font-size:0.82rem; color: var(--text-muted); text-align:center; margin-top: -24px; margin-bottom: 40px;">
+              Use the fullscreen button inside the module for the best experience.
+            </p>
+
+            <div style="text-align:center;">
+              <a href="index.html" class="btn btn-outline">
+                <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <polyline points="15,18 9,12 15,6"/>
+                </svg>
+                Back to all projects
+              </a>
+            </div>
+          </div>
+        `;
+
+        // Auto-resize iframe height based on content (optional, helps with responsive)
+        const frame = document.getElementById('storyline-frame');
+        frame.addEventListener('load', () => {
+          try {
+            const h = frame.contentWindow.document.body.scrollHeight;
+            if (h > 400) frame.style.height = h + 'px';
+          } catch (e) {
+            // Cross-origin iframe - leave fixed height in place.
+          }
+        });
+
+      } catch (e) {
+        showError('Could not load project data.');
+        console.error(e);
+      }
+    }
+
+    function showError(msg) {
+      document.getElementById('main-content').innerHTML = `
+        <div class="container">
+          <div class="error-msg">
+            <h2>Oops</h2>
+            <p>${msg}</p>
+            <a href="index.html" class="btn btn-outline" style="margin-top:16px; display:inline-flex;">Back to portfolio</a>
+          </div>
+        </div>
+      `;
+    }
+
+    loadProject();
+  </script>
+</body>
+</html>
