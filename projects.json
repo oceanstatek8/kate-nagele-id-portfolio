@@ -2,22 +2,33 @@
   {
     "id": "using-company-email-effectively",
     "title": "Using Company Email Effectively",
-    "description": "An eLearning module focused on practical email habits, professional tone, and communication best practices in the workplace.",
-    "thumbnail": "",
+    "description": "An engaging workplace communication module designed to help learners build confidence in email tone, clarity, and day-to-day professional writing.",
+    "thumbnail": "projects/using-company-email-effectively/story_content/thumbnail.jpg",
     "folder": "projects/using-company-email-effectively",
     "entry": "index.html",
-    "tags": ["Communication", "Workplace", "Professional Skills"],
+    "tags": ["Business Communication", "Email Etiquette", "Professional Skills"],
     "duration": "",
     "tools": "Articulate Storyline 360"
   },
   {
     "id": "difficult-conversations",
     "title": "Difficult Conversations",
-    "description": "A scenario-based learning experience designed to help employees approach challenging workplace conversations with clarity and confidence.",
-    "thumbnail": "",
+    "description": "A scenario-based learning experience that helps employees approach challenging workplace conversations with more confidence, clarity, and care.",
+    "thumbnail": "projects/difficult-conversations/story_content/thumbnail.jpg",
     "folder": "projects/difficult-conversations",
+    "entry": "story.html",
+    "tags": ["Scenario-Based Learning", "Conflict Resolution", "Leadership Development"],
+    "duration": "",
+    "tools": "Articulate Storyline 360"
+  },
+  {
+    "id": "project-coming-soon",
+    "title": "Project Coming Soon",
+    "description": "A third portfolio piece is in development and will be added here soon.",
+    "thumbnail": "",
+    "folder": "projects/project-coming-soon",
     "entry": "index.html",
-    "tags": ["Scenario-Based", "Communication", "Leadership"],
+    "tags": ["In Progress", "eLearning", "Portfolio"],
     "duration": "",
     "tools": "Articulate Storyline 360"
   }
