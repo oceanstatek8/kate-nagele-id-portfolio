@@ -2,10 +2,10 @@
   {
     "id": "using-company-email-effectively",
     "title": "Using Company Email Effectively",
-    "description": "An engaging workplace communication module designed to help learners build confidence in email tone, clarity, and day-to-day professional writing.",
+    "description": "A workplace communication module that supports learners in developing confidence in email tone, clarity, and effective professional writing.",
     "thumbnail": "projects/using-company-email-effectively/story_content/thumbnail.jpg",
     "folder": "projects/using-company-email-effectively",
-    "entry": "index.html",
+    "entry": "story.html",
     "tags": ["Business Communication", "Email Etiquette", "Professional Skills"],
     "duration": "",
     "tools": "Articulate Storyline 360"
@@ -13,7 +13,7 @@
   {
     "id": "difficult-conversations",
     "title": "Difficult Conversations",
-    "description": "A scenario-based learning experience that helps employees approach challenging workplace conversations with more confidence, clarity, and care.",
+    "description": "A workplace communication module designed to build confidence in handling difficult conversations with clarity, empathy, and professionalism.",
     "thumbnail": "projects/difficult-conversations/story_content/thumbnail.jpg?v=2",
     "folder": "projects/difficult-conversations",
     "entry": "story.html",
