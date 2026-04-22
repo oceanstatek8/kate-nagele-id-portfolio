@@ -20,16 +20,5 @@
     "tags": ["Scenario-Based Learning", "Conflict Resolution", "Leadership Development"],
     "duration": "",
     "tools": "Articulate Storyline 360"
-  },
-  {
-    "id": "project-coming-soon",
-    "title": "Project Coming Soon",
-    "description": "A third portfolio piece is in development and will be added here soon.",
-    "thumbnail": "",
-    "folder": "projects/project-coming-soon",
-    "entry": "index.html",
-    "tags": ["In Progress", "eLearning", "Portfolio"],
-    "duration": "",
-    "tools": "Articulate Storyline 360"
   }
 ]
