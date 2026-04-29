@@ -585,6 +585,9 @@ footer {
     height: 200px;
   }
   .project-grid { grid-template-columns: 1fr; }
+  .project-card-body { padding: 22px 24px 24px; }
+  .project-page-meta { padding: 0 4px; }
+  .project-page-meta p { padding-right: 8px; }
   nav { gap: 16px; }
   .nav-links { gap: 16px; }
 }
