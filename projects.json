@@ -20,5 +20,16 @@
     "tags": ["Scenario-Based Learning", "Conflict Resolution", "Leadership Development"],
     "duration": "",
     "tools": "Articulate Storyline 360"
+  },
+  {
+    "id": "cleanroom-essentials-preventing-contamination-in-pharmaceutical-manufacturing",
+    "title": "Cleanroom Essentials: Preventing Contamination in Pharmaceutical Manufacturing",
+    "description": "A pharmaceutical manufacturing module focused on cleanroom essentials, contamination prevention, and practices that support product safety.",
+    "thumbnail": "projects/cleanroom-essentials-preventing-contamination-in-pharmaceutical-manufacturing/assets/stock-image.jpg",
+    "folder": "projects/cleanroom-essentials-preventing-contamination-in-pharmaceutical-manufacturing",
+    "entry": "index.html",
+    "tags": ["Pharmaceutical Manufacturing", "Cleanroom Safety", "Compliance Training"],
+    "duration": "",
+    "tools": "Articulate Rise 360"
   }
 ]
